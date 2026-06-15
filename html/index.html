@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>Pizza Delivery Premium</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Header Tablette -->
+      <header class="tablet-header">
+        <div class="header-left">
+          <div class="logo">
+            <i class="fa-solid fa-pizza-slice"></i>
+            <span class="logo-text">PIZZA DELIVERY</span>
+          </div>
+        </div>
+        
+        <div class="header-center">
+          <div class="player-info">
+            <span class="player-name" id="playerName">Chargement...</span>
+            <span class="player-grade" id="playerGrade">-</span>
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="status-indicator">
+            <span class="status-dot" id="statusDot"></span>
+            <span class="status-text" id="statusText">Disponible</span>
+          </div>
+          <div class="time-display" id="currentTime">00:00</div>
+        </div>
+      </header>
+
+      <!-- Contenu Principal -->
+      <main class="tablet-content">
+        <!-- Menu Latéral -->
+        <aside class="sidebar">
+          <nav class="sidebar-menu">
+            <div class="menu-item active" data-page="home">
+              <i class="fa-solid fa-house"></i>
+              <span>Accueil</span>
+            </div>
+            <div class="menu-item" data-page="orders">
+              <i class="fa-solid fa-box"></i>
+              <span>Commandes</span>
+            </div>
+            <div class="menu-item" data-page="employees">
+              <i class="fa-solid fa-users"></i>
+              <span>Employés</span>
+            </div>
+            <div class="menu-item" data-page="society">
+              <i class="fa-solid fa-building"></i>
+              <span>Société</span>
+            </div>
+            <div class="menu-item" data-page="stats">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Statistiques</span>
+            </div>
+          </nav>
+          
+          <div class="sidebar-footer">
+            <button class="close-btn" id="closeBtn">
+              <i class="fa-solid fa-xmark"></i>
+              <span>Fermer</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- Zone de Contenu -->
+        <section class="content-area">
+          <!-- Page Accueil -->
+          <div class="page active" id="page-home">
+            <h2 class="page-title">Tableau de bord</h2>
+            
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-value" id="totalDeliveries">0</div>
+                  <div class="stat-label">Livraisons</div>
+                </div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-value" id="totalEarnings">0$</div>
+                  <div class="stat-label">Gains</div>
+                </div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-value" id="reputation">0%</div>
+                  <div class="stat-label">Réputation</div>
+                </div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-value" id="playerLevel">1</div>
+                  <div class="stat-label">Niveau</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="quick-actions">
+              <button class="action-btn primary" id="startDeliveryBtn">
+                <i class="fa-solid fa-play"></i>
+                <span>Démarrer Livraison</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Page Commandes -->
+          <div class="page" id="page-orders">
+            <h2 class="page-title">Commandes en cours</h2>
+            <div class="orders-list" id="ordersList">
+              <div class="empty-state">
+                <i class="fa-solid fa-box-open"></i>
+                <p>Aucune commande en cours</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Employés -->
+          <div class="page" id="page-employees">
+            <h2 class="page-title">Gestion Employés</h2>
+            <div class="employees-list" id="employeesList">
+              <div class="empty-state">
+                <i class="fa-solid fa-users"></i>
+                <p>Aucun employé en ligne</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Société -->
+          <div class="page" id="page-society">
+            <h2 class="page-title">Gestion Société</h2>
+            
+            <div class="society-balance">
+              <div class="balance-card">
+                <div class="balance-icon">
+                  <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div class="balance-content">
+                  <div class="balance-label">Solde Société</div>
+                  <div class="balance-value" id="societyBalance">0$</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="society-actions">
+              <button class="action-btn deposit" id="depositBtn">
+                <i class="fa-solid fa-plus"></i>
+                <span>Déposer</span>
+              </button>
+              <button class="action-btn withdraw" id="withdrawBtn">
+                <i class="fa-solid fa-minus"></i>
+                <span>Retirer</span>
+              </button>
+            </div>
+            
+            <div class="transactions-history">
+              <h3>Historique des transactions</h3>
+              <div class="transactions-list" id="transactionsList">
+                <div class="empty-state">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                  <p>Aucune transaction récente</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Statistiques -->
+          <div class="page" id="page-stats">
+            <h2 class="page-title">Statistiques détaillées</h2>
+            <div class="stats-details" id="statsDetails">
+              <div class="empty-state">
+                <i class="fa-solid fa-chart-pie"></i>
+                <p>Statistiques non disponibles</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Paramètres -->
+          <div class="page" id="page-settings">
+            <h2 class="page-title">Paramètres</h2>
+            <div class="settings-list">
+              <div class="setting-item">
+                <div class="setting-info">
+                  <i class="fa-solid fa-bell"></i>
+                  <span>Notifications</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="setting-item">
+                <div class="setting-info">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Sons</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
